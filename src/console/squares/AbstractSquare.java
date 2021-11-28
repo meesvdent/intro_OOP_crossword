@@ -1,6 +1,6 @@
 package console.squares;
 
-public class AbstractSquare {
+public abstract class AbstractSquare {
 
     private String type;
 
