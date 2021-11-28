@@ -5,11 +5,11 @@ public class WhiteSquare extends AbstractSquare{
     private char input;
 
     public WhiteSquare(){
-        super("white");
+        super("white", "O");
     }
 
-    public WhiteSquare(String type){
-        super(type);
+    public WhiteSquare(String type, String symbol){
+        super(type, symbol);
     }
 
     public char getInput(){

@@ -2,11 +2,11 @@ package console.squares;
 
 public class BlueSquare extends WhiteSquare{
 
-    private final char hint;
+    private final String hint;
     // private final char[] options;
 
-    public BlueSquare(char hint){
-        super("blue");
+    public BlueSquare(String hint){
+        super("blue", "H(" + hint + ")");
         this.hint = hint;
     }
 
