@@ -1,8 +1,8 @@
 package console.squares;
 
-public class GreySquare extends AbstractSquare {
+public class GreySquare extends WhiteSquare {
 
     public GreySquare(){
-        super("grey");
+        super("grey", "S");
     }
 }

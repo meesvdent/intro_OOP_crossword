@@ -11,7 +11,7 @@ public class Board {
     private int width;
     private int height;
 
-    AbstractSquare[][] squares;
+    private AbstractSquare[][] squares;
 
     public Board(String filename){
         this.parseSquares(filename);
@@ -25,7 +25,40 @@ public class Board {
         return this.height;
     }
 
+    public AbstractSquare[][] getSquares(){
+        return this.squares;
+    }
 
+    public AbstractSquare getSquares(int i, int j){
+        return this.squares[i][j];
+    }
+
+    public void printBoard(){
+        for(int i=0; i<this.height; i++){
+            for(int j=0; j<this.width; j++){
+                System.out.print(this.squares[i][j].getSymbol());
+                System.out.print("\t");
+            }
+            System.out.print("\n");
+        }
+    }
+
+    public void inputSquare(int i, int j){
+        if(i >= 0 && i < this.getHeight() && j >= 0 && j < this.width){
+            AbstractSquare curSquare = this.getSquares(i, j);
+            System.out.println("Symbol: " + curSquare.getSymbol());
+            if(curSquare instanceof WhiteSquare){
+                System.out.println("Set the letter on square " + i + ", " + j + ".");
+                ((WhiteSquare) curSquare).setInput(new Scanner(System.in).next());
+                System.out.println("yes");
+                System.out.println(curSquare.getSymbol());
+            }
+        }
+        else{
+            System.out.println("out of bounds");
+        }
+        this.printBoard();
+    }
 
     public void parseSquares(String filename){
 
@@ -47,7 +80,7 @@ public class Board {
                         this.squares[i][j] = new WhiteSquare();
                     }
                     if(nextString.charAt(0) == 'H'){
-                        this.squares[i][j] = new BlueSquare((String) nextString.charAt(2));
+                        this.squares[i][j] = new BlueSquare(String.valueOf(nextString.charAt(2)));
                     }
                     if(nextString.equals("X")){
                         this.squares[i][j] = new BlackSquare();
@@ -61,12 +94,12 @@ public class Board {
         catch(IllegalArgumentException | FileNotFoundException e){
             e.printStackTrace();
         }
-        System.out.println(this.squares);
     }
 
     public static void main(String[] args) {
         String filename = "puzzle-1-adjusted.txt";
         Board testBoard = new Board(filename);
-        System.out.println(testBoard.getHeight() + testBoard.getWidth());
+        testBoard.printBoard();
+        testBoard.inputSquare(0, 12);
     }
 }

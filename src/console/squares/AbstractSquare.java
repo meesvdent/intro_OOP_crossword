@@ -2,8 +2,8 @@ package console.squares;
 
 public abstract class AbstractSquare {
 
-    private String type;
-    private String symbol;
+    protected String type;
+    protected String symbol;
 
     public AbstractSquare(String type, String symbol){
         this.type = type;
@@ -12,5 +12,9 @@ public abstract class AbstractSquare {
 
     public String getType(){
         return this.type;
+    }
+
+    public String getSymbol(){
+        return this.symbol;
     }
 }

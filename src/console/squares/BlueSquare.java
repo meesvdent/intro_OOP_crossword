@@ -6,11 +6,11 @@ public class BlueSquare extends WhiteSquare{
     // private final char[] options;
 
     public BlueSquare(String hint){
-        super("blue", "H(" + hint + ")");
+        super("blue", "H");
         this.hint = hint;
     }
 
-    public char getHint(){
+    public String getHint(){
         return this.hint;
     }
 }

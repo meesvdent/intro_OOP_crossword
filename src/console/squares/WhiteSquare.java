@@ -2,7 +2,7 @@ package console.squares;
 
 public class WhiteSquare extends AbstractSquare{
 
-    private char input;
+    private String input;
 
     public WhiteSquare(){
         super("white", "O");
@@ -12,11 +12,20 @@ public class WhiteSquare extends AbstractSquare{
         super(type, symbol);
     }
 
-    public char getInput(){
+    public String getSymbol(){
+        if(! (this.getInput() == null)){
+            return this.getInput();
+        }
+        else{
+            return this.symbol;
+        }
+    }
+
+    public String getInput(){
         return this.input;
     }
 
-    public void setInput(char input){
+    public void setInput(String input){
         this.input = input;
     }
 
