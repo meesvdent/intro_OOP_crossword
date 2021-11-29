@@ -4,6 +4,7 @@ import console.squares.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Board {
@@ -46,12 +47,15 @@ public class Board {
     public void inputSquare(int i, int j){
         if(i >= 0 && i < this.getHeight() && j >= 0 && j < this.width){
             AbstractSquare curSquare = this.getSquares(i, j);
-            System.out.println("Symbol: " + curSquare.getSymbol());
+            if(curSquare instanceof BlueSquare){
+                System.out.println("Your options: " + Arrays.toString(curSquare.getOptions()));
+            }
             if(curSquare instanceof WhiteSquare){
                 System.out.println("Set the letter on square " + i + ", " + j + ".");
                 ((WhiteSquare) curSquare).setInput(new Scanner(System.in).next());
-                System.out.println("yes");
-                System.out.println(curSquare.getSymbol());
+            }
+            else{
+                System.out.println("This square does not accept input.");
             }
         }
         else{
@@ -100,6 +104,6 @@ public class Board {
         String filename = "puzzle-1-adjusted.txt";
         Board testBoard = new Board(filename);
         testBoard.printBoard();
-        testBoard.inputSquare(0, 12);
+        testBoard.inputSquare(0, 3);
     }
 }

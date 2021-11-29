@@ -17,4 +17,8 @@ public abstract class AbstractSquare {
     public String getSymbol(){
         return this.symbol;
     }
+
+    public String[] getOptions(){
+        return new String[0];
+    }
 }
