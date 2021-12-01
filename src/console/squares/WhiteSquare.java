@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class WhiteSquare extends AbstractSquare{
 
     private String input;
-    private String[] options;
+    private char[] options;
 
     public WhiteSquare(){
         super("white", "O");
@@ -17,15 +17,14 @@ public class WhiteSquare extends AbstractSquare{
     }
 
     public void setOptions(){
-        String[] stringArray = new String[26];
+        char[] optionCharacters = new char[26];
         for(int i = 0; i<26; i++){
-            char e = (char) (i+'A');
-            stringArray[i] = String.valueOf(e);
+             optionCharacters[i] = (char) (i+'A');
         }
-        this.options = stringArray;
+        this.options =  optionCharacters;
     }
 
-    public String[] getOptions(){
+    public char[] getOptions(){
         return this.options;
     }
 
@@ -44,6 +43,14 @@ public class WhiteSquare extends AbstractSquare{
 
     public void setInput(String input){
         this.input = input;
+    }
+
+    public String toString(){
+        if(this.input == null){
+            return "(" + this.getSymbol() + ")";
+        } else{
+            return " " + this.getInput() + " ";
+        }
     }
 
 }

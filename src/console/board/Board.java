@@ -12,10 +12,14 @@ public class Board {
     private int width;
     private int height;
 
-    private AbstractSquare[][] squares;
+    private String answer;
 
-    public Board(String filename){
+    private AbstractSquare[][] squares;
+    private AnswerSquare[] answerSquares;
+
+    public Board(String filename, String answer){
         this.parseSquares(filename);
+        this.parseAnswer(answer);
     }
 
     public int getWidth(){
@@ -34,25 +38,27 @@ public class Board {
         return this.squares[i][j];
     }
 
-    public void printBoard(){
+    public String toString(){
+        StringBuilder output = new StringBuilder();
         for(int i=0; i<this.height; i++){
             for(int j=0; j<this.width; j++){
-                System.out.print(this.squares[i][j].getSymbol());
-                System.out.print("\t");
+                output.append(this.squares[i][j]);
+                output.append("\t");
             }
-            System.out.print("\n");
+            output.append("\n");
         }
+        return output.toString();
     }
 
     public void inputSquare(int i, int j){
         if(i >= 0 && i < this.getHeight() && j >= 0 && j < this.width){
             AbstractSquare curSquare = this.getSquares(i, j);
-            if(curSquare instanceof BlueSquare){
-                System.out.println("Your options: " + Arrays.toString(curSquare.getOptions()));
+            if(curSquare instanceof BlueSquare blueSquare){
+                System.out.println("Your options: " + Arrays.toString(blueSquare.getOptions()));
             }
-            if(curSquare instanceof WhiteSquare){
+            if(curSquare instanceof WhiteSquare whiteSquare){
                 System.out.println("Set the letter on square " + i + ", " + j + ".");
-                ((WhiteSquare) curSquare).setInput(new Scanner(System.in).next());
+                whiteSquare.setInput(new Scanner(System.in).next());
             }
             else{
                 System.out.println("This square does not accept input.");
@@ -61,7 +67,7 @@ public class Board {
         else{
             System.out.println("out of bounds");
         }
-        this.printBoard();
+        System.out.println(this);
     }
 
     public void parseSquares(String filename){
@@ -84,7 +90,7 @@ public class Board {
                         this.squares[i][j] = new WhiteSquare();
                     }
                     if(nextString.charAt(0) == 'H'){
-                        this.squares[i][j] = new BlueSquare(String.valueOf(nextString.charAt(2)));
+                        this.squares[i][j] = new BlueSquare(nextString.charAt(2));
                     }
                     if(nextString.equals("X")){
                         this.squares[i][j] = new BlackSquare();
@@ -98,6 +104,28 @@ public class Board {
         catch(IllegalArgumentException | FileNotFoundException e){
             e.printStackTrace();
         }
+    }
+
+    public void parseAnswer(String answer){
+
+        char[] charArray = answer.toCharArray();
+        AnswerSquare[] answerSquares = new AnswerSquare[answer.length()];
+
+        for(int i=0; i<answer.length(); i++){
+            char ch = answer.charAt(i);
+            answerSquares[i] = new AnswerSquare(ch);
+        }
+
+        this.answerSquares = answerSquares;
+    }
+
+    public boolean checkAnswer(){
+        for(AnswerSquare answerSquare : this.answerSquares){
+            if(!answerSquare.checkAnswer()){
+                return false;
+            }
+        }
+        return true;
     }
 
 }
