@@ -12,8 +12,6 @@ public class Board {
     private int width;
     private int height;
 
-    private String answer;
-
     private AbstractSquare[][] squares;
     private AnswerSquare[] answerSquares;
 
@@ -51,13 +49,16 @@ public class Board {
     }
 
     public void inputSquare(int i, int j){
+        // enter a character input in a square
+
+        // check whether indexes are within domain
         if(i >= 0 && i < this.getHeight() && j >= 0 && j < this.width){
             AbstractSquare curSquare = this.getSquares(i, j);
-            if(curSquare instanceof BlueSquare blueSquare){
-                System.out.println("Your options: " + Arrays.toString(blueSquare.getOptions()));
-            }
+
+            // Check whether the chosen square is an instance of WhiteSquare (the only squares which accept input).
             if(curSquare instanceof WhiteSquare whiteSquare){
                 System.out.println("Set the letter on square " + i + ", " + j + ".");
+                System.out.println("Your white square options: " + Arrays.toString(whiteSquare.getOptions()));
                 whiteSquare.setInput(new Scanner(System.in).next());
             }
             else{
@@ -68,6 +69,10 @@ public class Board {
             System.out.println("out of bounds");
         }
         System.out.println(this);
+    }
+
+    public void inputAnswer(int i){
+        answerSquares[i].setInput(new Scanner(System.in).next());
     }
 
     public void parseSquares(String filename){
