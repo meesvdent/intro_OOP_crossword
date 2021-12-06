@@ -16,4 +16,5 @@ public class AnswerSquare extends WhiteSquare{
     public boolean checkAnswer(){
         return this.answer == this.input;
     }
+
 }

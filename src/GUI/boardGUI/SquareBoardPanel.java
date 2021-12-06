@@ -17,7 +17,7 @@ public class SquareBoardPanel {
     AbstractSquarePanel[][] squarePanels;
 
     public SquareBoardPanel(String filename, String answer){
-        SquareBoard squareBoard = new SquareBoard(filename, answer);
+        SquareBoard squareBoard = new SquareBoard(filename);
         AbstractSquare[][] abstractSquares = squareBoard.getSquares();
 
         AbstractSquarePanel[][] squarePanels = new AbstractSquarePanel[squareBoard.getHeight()][squareBoard.getWidth()];

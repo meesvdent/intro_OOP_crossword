@@ -30,6 +30,7 @@ public class AnswerBoard {
     }
 
     public void inputAnswer(int i){
+        System.out.println("Please enter the desired letter for letter " + i + ": ");
         answerSquares[i].setInput(new Scanner(System.in).next());
     }
 
@@ -40,5 +41,20 @@ public class AnswerBoard {
             }
         }
         return true;
+    }
+
+    public String toString(){
+        StringBuilder output = new StringBuilder();
+        output.append("Current answer: \n");
+        for(AnswerSquare square : answerSquares){
+            if(square.getInput() == null){
+                output.append("_");
+            }
+            else {
+                output.append(square.getInput());
+            }
+        }
+        output.append("\n");
+        return output.toString();
     }
 }
