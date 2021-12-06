@@ -10,19 +10,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Board {
+public class SquareBoard {
 
     private int width;
     private int height;
 
     private AbstractSquare[][] squares;
-    private AnswerSquare[] answerSquares;
 
     private ArrayList<Question>[] questions;
 
-    public Board(String filename, String answer){
+    public SquareBoard(String filename, String answer){
         this.parseSquares(filename);
-        this.parseAnswer(answer);
         this.parseQuestions(filename);
     }
 
@@ -85,10 +83,6 @@ public class Board {
         System.out.println(this);
     }
 
-    public void inputAnswer(int i){
-        answerSquares[i].setInput(new Scanner(System.in).next());
-    }
-
     public void parseSquares(String filename){
 
         try(Scanner scan = new Scanner(new File(filename))){
@@ -125,19 +119,6 @@ public class Board {
         }
     }
 
-    public void parseAnswer(String answer){
-
-        char[] charArray = answer.toCharArray();
-        AnswerSquare[] answerSquares = new AnswerSquare[answer.length()];
-
-        for(int i=0; i<answer.length(); i++){
-            char ch = answer.charAt(i);
-            answerSquares[i] = new AnswerSquare(ch);
-        }
-
-        this.answerSquares = answerSquares;
-    }
-
     public void parseQuestions(String filename){
 
         this.questions = new ArrayList[2];
@@ -172,13 +153,5 @@ public class Board {
         }
     }
 
-    public boolean checkAnswer(){
-        for(AnswerSquare answerSquare : this.answerSquares){
-            if(!answerSquare.checkAnswer()){
-                return false;
-            }
-        }
-        return true;
-    }
 
 }
