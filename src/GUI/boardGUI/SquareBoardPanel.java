@@ -56,4 +56,8 @@ public class SquareBoardPanel {
         boardFrame.setVisible(true);
     }
 
+    public JPanel getBoardPanel(){
+        return this.boardPanel;
+    }
+
 }
