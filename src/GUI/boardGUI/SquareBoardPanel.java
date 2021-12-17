@@ -38,9 +38,13 @@ public class SquareBoardPanel {
             }
 
         }
+
         this.boardPanel = new JPanel();
         this.boardPanel.setLayout(new GridLayout(squareBoard.getHeight(), squareBoard.getWidth()));
         this.boardPanel.setPreferredSize(new Dimension(squareBoard.getWidth()*25, squareBoard.getHeight()*25));
+
+        JPanel topRow = new JPanel();
+        topRow.setLayout(new FlowLayout());
         for (AbstractSquarePanel[] squarePanel : squarePanels) {
             for (AbstractSquarePanel abstractSquarePanel : squarePanel) {
                 boardPanel.add(abstractSquarePanel.getSquarePanel());

@@ -27,6 +27,10 @@ public class Keyboard {
         }
     }
 
+    public KeyboardKey[] getKeys(){
+        return this.keys;
+    }
+
     public String toString(){
         StringBuilder stringBuilder = new StringBuilder();
         int i = 0;
