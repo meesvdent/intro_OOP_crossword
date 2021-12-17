@@ -7,12 +7,13 @@ import java.util.Random;
 public class BlueSquare extends WhiteSquare{
 
     private final char hint;
-    private char[] options;
+    public char[] options;
 
     public BlueSquare(char hint){
         super("blue", "H");
         this.hint = hint;
         this.initHint(5);
+        System.out.println("Blue options: "+ this.getOptions());
     }
 
     public char getHint(){
@@ -23,9 +24,20 @@ public class BlueSquare extends WhiteSquare{
         this.options = options;
     }
 
-    public char[] getOptions(){
-        return this.options;
+
+    public Character[] getOptions(){
+        System.out.println("options");
+        System.out.println("options: " + this.options);
+        int nOptions = this.options.length;
+        Character[] characterOptions = new Character[nOptions];
+        int i = 0;
+        for(char option : this.options){
+            characterOptions[i] = option;
+            i++;
+        }
+        return characterOptions;
     }
+
 
     private void initHint(int n){
         // function which initializes the options array, which holds n unique characters of which n-1 random characters and the hint
