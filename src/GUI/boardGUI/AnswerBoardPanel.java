@@ -6,6 +6,8 @@ import console.squares.AnswerSquare;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class AnswerBoardPanel {
 
@@ -13,6 +15,8 @@ public class AnswerBoardPanel {
     AnswerBoard answerBoard;
 
     public AnswerBoardPanel(String answer){
+
+        AnswerBoardEventListener eventListener = new AnswerBoardEventListener();
 
         this.answerPanel = new JPanel();
         this.answerPanel.setLayout(new FlowLayout());
@@ -43,6 +47,14 @@ public class AnswerBoardPanel {
 
     public JPanel getAnswerPanel(){
         return this.answerPanel;
+    }
+
+    public class AnswerBoardEventListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e){
+
+        }
     }
 
 

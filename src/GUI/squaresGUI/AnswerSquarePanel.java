@@ -1,5 +1,7 @@
 package GUI.squaresGUI;
 
+import GUI.boardGUI.AnswerBoardPanel;
+import GUI.boardGUI.SquareBoardPanel;
 import GUI.squaresGUI.WhiteSquarePanel;
 import console.squares.AnswerSquare;
 

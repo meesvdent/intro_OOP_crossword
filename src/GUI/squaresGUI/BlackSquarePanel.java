@@ -1,5 +1,6 @@
 package GUI.squaresGUI;
 
+import GUI.boardGUI.SquareBoardPanel;
 import console.squares.BlackSquare;
 
 import java.awt.*;

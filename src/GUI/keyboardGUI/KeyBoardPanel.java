@@ -1,23 +1,32 @@
 package GUI.keyboardGUI;
 
+import GUI.boardGUI.SquareBoardPanel;
 import console.Keyboard;
 import console.KeyboardKey;
+import console.squares.WhiteSquare;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class KeyBoardPanel {
 
     KeyboardKeyPanel[] keyboardKeyPanels;
+    Keyboard keyboard;
     JPanel keyBoardPanel;
+    public String choice;
+    JFrame keyboardFrame;
 
-    public KeyBoardPanel(Character[] options){
+    public KeyBoardPanel(Character[] options, WhiteSquare square){
         keyboardKeyPanels = new KeyboardKeyPanel[26];
-        Keyboard keyboard = new Keyboard(options);
+        keyboard = new Keyboard(options, square);
         KeyboardKey[] keys = keyboard.getKeys();
+        KeyboardEventListener keyboardEventListener = new KeyboardEventListener();
+
 
         for(int i=0; i<26; i++){
-            keyboardKeyPanels[i] = new KeyboardKeyPanel(keys[i]);
+            keyboardKeyPanels[i] = new KeyboardKeyPanel(keys[i], keyboardEventListener);
         }
 
         JPanel topRowPanel = new JPanel();
@@ -53,7 +62,7 @@ public class KeyBoardPanel {
     }
 
     public void showBoard(){
-        JFrame keyboardFrame = new JFrame();
+        keyboardFrame = new JFrame();
         keyboardFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         keyboardFrame.getContentPane().add(this.keyBoardPanel);
         keyboardFrame.pack();
@@ -62,7 +71,17 @@ public class KeyBoardPanel {
 
     public static void main(String[] args) {
         Character[] options = {'U', 'D', 'W', 'P', 'Q'};
-        KeyBoardPanel testKeyBoard = new KeyBoardPanel(options);
+        WhiteSquare testSquare = new WhiteSquare();
+        KeyBoardPanel testKeyBoard = new KeyBoardPanel(options, testSquare);
         testKeyBoard.showBoard();
     }
+
+    public class KeyboardEventListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            keyboard.setChoice(e.getActionCommand());
+        }
+    }
+
 }

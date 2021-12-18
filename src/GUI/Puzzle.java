@@ -3,13 +3,22 @@ package GUI;
 import GUI.boardGUI.AnswerBoardPanel;
 import GUI.boardGUI.QuestionBoardPanel;
 import GUI.boardGUI.SquareBoardPanel;
+import GUI.keyboardGUI.KeyBoardPanel;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class Main {
-    public static void main(String[] args) {
+public class Puzzle {
 
+    JFrame crosswordFrame;
+
+    SquareBoardPanel squareBoardPanel;
+    AnswerBoardPanel answerBoardPanel;
+    QuestionBoardPanel questionBoardPanel;
+
+    KeyBoardPanel keyBoardPanel;
+
+    public Puzzle(String filename, String answer){
         JFrame crossword = new JFrame("Crossword puzzle");
         crossword.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         crossword.setLayout(new FlowLayout());
@@ -17,12 +26,9 @@ public class Main {
         JPanel crosswordPanel = new JPanel();
         crosswordPanel.setLayout(new FlowLayout());
 
-        String filename = "puzzle-1-adjusted.txt";
-
-        SquareBoardPanel squareBoardPanel = new SquareBoardPanel(filename, "southpark");
-        AnswerBoardPanel answerBoardPanel = new AnswerBoardPanel("SOUTHPARK");
-        QuestionBoardPanel questionBoardPanel = new QuestionBoardPanel(filename);
-
+        squareBoardPanel = new SquareBoardPanel(filename, answer);
+        answerBoardPanel = new AnswerBoardPanel(answer);
+        questionBoardPanel = new QuestionBoardPanel(filename);
 
         crosswordPanel.setPreferredSize(new Dimension(700, 700));
         crosswordPanel.add(questionBoardPanel.getQuestionPanel());
@@ -32,5 +38,18 @@ public class Main {
         crossword.getContentPane().add(crosswordPanel);
         crossword.pack();
         crossword.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+
+        SwingUtilities.invokeLater(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        Puzzle runPuzzle = new Puzzle("puzzle-1-adjusted.txt", "SOUTHPARK");
+                    }
+                }
+        );
+
     }
 }

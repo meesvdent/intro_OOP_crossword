@@ -1,5 +1,10 @@
 package console;
 
+import console.squares.AbstractSquare;
+import console.squares.WhiteSquare;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,9 +14,11 @@ public class Keyboard {
 
     private List<Character> options;
     private final KeyboardKey[] keys;
+    private WhiteSquare square;
 
-    public Keyboard(Character[] options){
+    public Keyboard(Character[] options, WhiteSquare square){
         this.options = Arrays.asList(options);
+        this.square = square;
 
         char[] alphabet = new char[26];
         for(int i=0; i<26; i++) {
@@ -31,6 +38,10 @@ public class Keyboard {
         return this.keys;
     }
 
+    public void setChoice(String choice){
+        this.square.setInput(choice);
+    }
+
     public String toString(){
         StringBuilder stringBuilder = new StringBuilder();
         int i = 0;
@@ -46,7 +57,9 @@ public class Keyboard {
 
     public static void main(String[] args) {
         Character[] testOptions = {'A', 'B', 'C'};
-        Keyboard testKeyboard = new Keyboard(testOptions);
+        WhiteSquare testSquare = new WhiteSquare();
+        Keyboard testKeyboard = new Keyboard(testOptions, testSquare);
         System.out.println(testKeyboard);
     }
+
 }

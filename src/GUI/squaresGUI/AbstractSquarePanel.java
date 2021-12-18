@@ -1,5 +1,6 @@
 package GUI.squaresGUI;
 
+import GUI.boardGUI.SquareBoardPanel;
 import console.squares.AbstractSquare;
 
 import javax.swing.*;
@@ -9,6 +10,7 @@ public class AbstractSquarePanel {
 
     private JPanel squarePanel;
     private AbstractSquare square;
+    private SquareBoardPanel.SquareBoardEventListener eventListener;
 
     public AbstractSquarePanel(AbstractSquare abstractSquare, Color color){
         this.square = abstractSquare;
