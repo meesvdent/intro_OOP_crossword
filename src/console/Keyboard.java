@@ -42,6 +42,10 @@ public class Keyboard {
         this.square.setInput(choice);
     }
 
+    public WhiteSquare getSquare(){
+        return this.square;
+    }
+
     public String toString(){
         StringBuilder stringBuilder = new StringBuilder();
         int i = 0;

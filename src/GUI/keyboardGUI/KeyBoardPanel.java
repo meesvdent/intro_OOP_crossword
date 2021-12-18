@@ -1,6 +1,7 @@
 package GUI.keyboardGUI;
 
 import GUI.boardGUI.SquareBoardPanel;
+import GUI.squaresGUI.WhiteSquarePanel;
 import console.Keyboard;
 import console.KeyboardKey;
 import console.squares.WhiteSquare;
@@ -17,12 +18,14 @@ public class KeyBoardPanel {
     JPanel keyBoardPanel;
     public String choice;
     JFrame keyboardFrame;
+    JButton sourceButton;
 
-    public KeyBoardPanel(Character[] options, WhiteSquare square){
+    public KeyBoardPanel(Character[] options, WhiteSquare square, JButton button){
         keyboardKeyPanels = new KeyboardKeyPanel[26];
         keyboard = new Keyboard(options, square);
         KeyboardKey[] keys = keyboard.getKeys();
         KeyboardEventListener keyboardEventListener = new KeyboardEventListener();
+        sourceButton = button;
 
 
         for(int i=0; i<26; i++){
@@ -31,15 +34,15 @@ public class KeyBoardPanel {
 
         JPanel topRowPanel = new JPanel();
         topRowPanel.setLayout(new GridLayout(1, 10));
-        topRowPanel.setPreferredSize(new Dimension(10*25, 25));
+        topRowPanel.setPreferredSize(new Dimension(10*80, 80));
 
         JPanel midRowPanel = new JPanel();
         midRowPanel.setLayout(new GridLayout(1, 9));
-        midRowPanel.setPreferredSize(new Dimension(9*25, 25));
+        midRowPanel.setPreferredSize(new Dimension(9*80, 80));
 
         JPanel bottomRowPanel = new JPanel();
         bottomRowPanel.setLayout(new GridLayout(1, 7));
-        midRowPanel.setPreferredSize(new Dimension(7*25, 25));
+        midRowPanel.setPreferredSize(new Dimension(7*80, 80));
 
         for(int i=0; i<26; i++){
             if(i < 10){
@@ -55,7 +58,7 @@ public class KeyBoardPanel {
 
         this.keyBoardPanel = new JPanel();
         this.keyBoardPanel.setLayout(new GridLayout(3, 1));
-        this.keyBoardPanel.setPreferredSize(new Dimension(10*25, 3*25));
+        this.keyBoardPanel.setPreferredSize(new Dimension(10*80, 3*80));
         this.keyBoardPanel.add(topRowPanel);
         this.keyBoardPanel.add(midRowPanel);
         this.keyBoardPanel.add(bottomRowPanel);
@@ -72,7 +75,8 @@ public class KeyBoardPanel {
     public static void main(String[] args) {
         Character[] options = {'U', 'D', 'W', 'P', 'Q'};
         WhiteSquare testSquare = new WhiteSquare();
-        KeyBoardPanel testKeyBoard = new KeyBoardPanel(options, testSquare);
+        JButton testButton = new JButton("Test");
+        KeyBoardPanel testKeyBoard = new KeyBoardPanel(options, testSquare, testButton);
         testKeyBoard.showBoard();
     }
 
@@ -81,6 +85,8 @@ public class KeyBoardPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             keyboard.setChoice(e.getActionCommand());
+            sourceButton.setText(keyboard.getSquare().getInput());
+            keyboardFrame.dispose();
         }
     }
 

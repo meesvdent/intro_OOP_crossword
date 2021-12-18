@@ -20,7 +20,7 @@ public class KeyboardKeyPanel {
 
         this.keyPanel = new JPanel();
         this.keyPanel.setLayout(new GridLayout(1, 1));
-        this.keyPanel.setPreferredSize(new Dimension(25, 25));
+        this.keyPanel.setPreferredSize(new Dimension(50, 50));
         this.keyPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
         JLabel charLabel = new JLabel(Character.toString(this.key.getLetter()));

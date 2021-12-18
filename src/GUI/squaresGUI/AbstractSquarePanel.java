@@ -9,7 +9,7 @@ import java.awt.*;
 public class AbstractSquarePanel {
 
     private JPanel squarePanel;
-    private AbstractSquare square;
+    protected AbstractSquare square;
     private SquareBoardPanel.SquareBoardEventListener eventListener;
 
     public AbstractSquarePanel(AbstractSquare abstractSquare, Color color){
@@ -17,7 +17,7 @@ public class AbstractSquarePanel {
         this.squarePanel = new JPanel();
         this.squarePanel.setLayout(new GridLayout(1, 1));
         this.squarePanel.setBackground(color);
-        this.squarePanel.setPreferredSize(new Dimension(25, 25));
+        this.squarePanel.setPreferredSize(new Dimension(50, 50));
         this.squarePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
     }
 

@@ -30,7 +30,7 @@ public class Puzzle {
         answerBoardPanel = new AnswerBoardPanel(answer);
         questionBoardPanel = new QuestionBoardPanel(filename);
 
-        crosswordPanel.setPreferredSize(new Dimension(700, 700));
+        crosswordPanel.setPreferredSize(new Dimension(1000, 1000));
         crosswordPanel.add(questionBoardPanel.getQuestionPanel());
         crosswordPanel.add(squareBoardPanel.getBoardPanel());
         crosswordPanel.add(answerBoardPanel.getAnswerPanel());
