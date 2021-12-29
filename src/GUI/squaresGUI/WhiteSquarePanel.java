@@ -18,23 +18,21 @@ public class WhiteSquarePanel extends AbstractSquarePanel {
 
     public WhiteSquarePanel(WhiteSquare whiteSquare){
         super(whiteSquare, Color.WHITE);
-        button = new JButton(whiteSquare.getInput());
-        button.setOpaque(true);
-        button.setBorderPainted(false);
-        button.addActionListener(new WhiteSquareEventListener());
-        button.setMargin( new Insets(0, 0, 0, 0) );
-        this.getSquarePanel().add(button);
+        this.getSquarePanel().add(this.createSquareButton(whiteSquare));
     }
 
     public WhiteSquarePanel(WhiteSquare whiteSquare, Color color){
         super(whiteSquare, color);
+        this.getSquarePanel().add(this.createSquareButton(whiteSquare));
+    }
+
+    public JButton createSquareButton(WhiteSquare whiteSquare){
         button = new JButton(whiteSquare.getInput());
-        button.setText(whiteSquare.getInput());
         button.setOpaque(false);
         button.setBorderPainted(false);
         button.addActionListener(new WhiteSquareEventListener());
-        button.setMargin( new Insets(0, 0, 0, 0));
-        this.getSquarePanel().add(button);
+        button.setMargin( new Insets(0, 0, 0, 0) );
+        return button;
     }
 
     @Override
@@ -49,7 +47,7 @@ public class WhiteSquarePanel extends AbstractSquarePanel {
     public class WhiteSquareEventListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            WhiteSquare curSquare = (WhiteSquare) getSquare();
+            WhiteSquare curSquare = getSquare();
             KeyBoardPanel keyBoard = new KeyBoardPanel(curSquare.getOptions(), getSquare(), getButton());
             keyBoard.showBoard();
         }

@@ -1,14 +1,9 @@
 package GUI.keyboardGUI;
 
-import GUI.boardGUI.QuestionBoardPanel;
-import GUI.boardGUI.SquareBoardPanel;
 import console.KeyboardKey;
-import console.squares.WhiteSquare;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class KeyboardKeyPanel {
 
@@ -19,21 +14,18 @@ public class KeyboardKeyPanel {
         this.key = key;
 
         this.keyPanel = new JPanel();
-        this.keyPanel.setLayout(new GridLayout(1, 1));
-        this.keyPanel.setPreferredSize(new Dimension(50, 50));
+        this.keyPanel.setLayout(new FlowLayout());
         this.keyPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-
-        JLabel charLabel = new JLabel(Character.toString(this.key.getLetter()));
-        charLabel.setVerticalAlignment(SwingConstants.CENTER);
-        charLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        this.keyPanel.setPreferredSize(new Dimension(40, 40));
 
         if(this.key.isAvailable()){
             this.keyPanel.setBackground(Color.WHITE);
             JButton keyButton = new JButton(String.valueOf(this.key.getLetter()));
             keyButton.setBackground(Color.WHITE);
-            keyButton.setOpaque(true);
+            keyButton.setOpaque(false);
             keyButton.setBorderPainted(false);
             keyButton.addActionListener(eventListener);
+            keyButton.setMargin( new Insets(0, 0, 0, 0) );
             this.keyPanel.add(keyButton);
         } else{
             this.keyPanel.setBackground(Color.GRAY);

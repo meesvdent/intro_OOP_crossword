@@ -45,7 +45,6 @@ public class SquareBoardPanel {
 
         this.boardPanel = new JPanel();
         this.boardPanel.setLayout(new GridLayout(squareBoard.getHeight(), squareBoard.getWidth()));
-        this.boardPanel.setPreferredSize(new Dimension(squareBoard.getWidth() * 40, squareBoard.getHeight() * 40));
 
         JPanel topRow = new JPanel();
         topRow.setLayout(new FlowLayout());

@@ -16,7 +16,6 @@ public class KeyBoardPanel {
     KeyboardKeyPanel[] keyboardKeyPanels;
     Keyboard keyboard;
     JPanel keyBoardPanel;
-    public String choice;
     JFrame keyboardFrame;
     JButton sourceButton;
 
@@ -27,22 +26,18 @@ public class KeyBoardPanel {
         KeyboardEventListener keyboardEventListener = new KeyboardEventListener();
         sourceButton = button;
 
-
         for(int i=0; i<26; i++){
             keyboardKeyPanels[i] = new KeyboardKeyPanel(keys[i], keyboardEventListener);
         }
 
         JPanel topRowPanel = new JPanel();
-        topRowPanel.setLayout(new GridLayout(1, 10));
-        topRowPanel.setPreferredSize(new Dimension(10*80, 80));
+        topRowPanel.setLayout(new FlowLayout());
 
         JPanel midRowPanel = new JPanel();
-        midRowPanel.setLayout(new GridLayout(1, 9));
-        midRowPanel.setPreferredSize(new Dimension(9*80, 80));
+        midRowPanel.setLayout(new FlowLayout());
 
         JPanel bottomRowPanel = new JPanel();
-        bottomRowPanel.setLayout(new GridLayout(1, 7));
-        midRowPanel.setPreferredSize(new Dimension(7*80, 80));
+        bottomRowPanel.setLayout(new FlowLayout());
 
         for(int i=0; i<26; i++){
             if(i < 10){
@@ -57,8 +52,7 @@ public class KeyBoardPanel {
         }
 
         this.keyBoardPanel = new JPanel();
-        this.keyBoardPanel.setLayout(new GridLayout(3, 1));
-        this.keyBoardPanel.setPreferredSize(new Dimension(10*80, 3*80));
+        this.keyBoardPanel.setLayout(new BoxLayout(keyBoardPanel, BoxLayout.Y_AXIS));
         this.keyBoardPanel.add(topRowPanel);
         this.keyBoardPanel.add(midRowPanel);
         this.keyBoardPanel.add(bottomRowPanel);
@@ -86,6 +80,9 @@ public class KeyBoardPanel {
         public void actionPerformed(ActionEvent e) {
             keyboard.setChoice(e.getActionCommand());
             sourceButton.setText(keyboard.getSquare().getInput());
+            sourceButton.setMargin(new Insets(0, 0, 0, 0));
+            sourceButton.setFont(new Font("Arial", Font.PLAIN, 10));
+            System.out.println(keyboard.getSquare().getInput());
             keyboardFrame.dispose();
         }
     }

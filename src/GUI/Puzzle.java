@@ -23,19 +23,22 @@ public class Puzzle {
         crossword.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         crossword.setLayout(new FlowLayout());
 
-        JPanel crosswordPanel = new JPanel();
-        crosswordPanel.setLayout(new FlowLayout());
-
         squareBoardPanel = new SquareBoardPanel(filename, answer);
         answerBoardPanel = new AnswerBoardPanel(answer);
         questionBoardPanel = new QuestionBoardPanel(filename);
 
-        crosswordPanel.setPreferredSize(new Dimension(1000, 1000));
-        crosswordPanel.add(questionBoardPanel.getQuestionPanel());
-        crosswordPanel.add(squareBoardPanel.getBoardPanel());
-        crosswordPanel.add(answerBoardPanel.getAnswerPanel());
+        JPanel horizontalPanel = new JPanel();
+        horizontalPanel.setLayout(new FlowLayout());
 
-        crossword.getContentPane().add(crosswordPanel);
+        JPanel rightPanel = new JPanel();
+        rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
+
+        horizontalPanel.add(questionBoardPanel.getQuestionPanel());
+        rightPanel.add(squareBoardPanel.getBoardPanel());
+        rightPanel.add(answerBoardPanel.getAnswerPanel());
+        horizontalPanel.add(rightPanel);
+
+        crossword.getContentPane().add(horizontalPanel);
         crossword.pack();
         crossword.setVisible(true);
     }
