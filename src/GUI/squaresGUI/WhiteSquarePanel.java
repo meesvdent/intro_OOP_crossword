@@ -31,7 +31,6 @@ public class WhiteSquarePanel extends AbstractSquarePanel {
         button.setOpaque(false);
         button.setBorderPainted(false);
         button.addActionListener(new WhiteSquareEventListener());
-        button.setMargin( new Insets(0, 0, 0, 0) );
         return button;
     }
 

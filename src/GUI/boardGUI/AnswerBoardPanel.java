@@ -16,8 +16,6 @@ public class AnswerBoardPanel {
 
     public AnswerBoardPanel(String answer){
 
-        AnswerBoardEventListener eventListener = new AnswerBoardEventListener();
-
         this.answerPanel = new JPanel();
         this.answerPanel.setLayout(new FlowLayout());
         this.answerBoard = new AnswerBoard(answer);
@@ -28,6 +26,7 @@ public class AnswerBoardPanel {
         }
 
         JButton checkButton = new JButton("Check!");
+        checkButton.addActionListener(new AnswerBoardEventListener());
         this.answerPanel.add(checkButton);
 
     }
@@ -48,7 +47,11 @@ public class AnswerBoardPanel {
 
         @Override
         public void actionPerformed(ActionEvent e){
-
+            if(answerBoard.checkAnswer()){
+                JOptionPane.showMessageDialog(null, "Your answer is correct!");
+            } else{
+                JOptionPane.showMessageDialog(null, "That's a shame, incorrect!");
+            }
         }
     }
 

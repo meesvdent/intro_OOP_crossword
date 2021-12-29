@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class WhiteSquare extends AbstractSquare{
 
-    private String input;
+    protected String input;
     protected char[] options;
 
     public WhiteSquare(){
@@ -26,8 +26,6 @@ public class WhiteSquare extends AbstractSquare{
     }
 
     public Character[] getOptions(){
-        System.out.println("options");
-        System.out.println("options: " + this.options);
         int nOptions = this.options.length;
         Character[] characterOptions = new Character[nOptions];
         int i = 0;

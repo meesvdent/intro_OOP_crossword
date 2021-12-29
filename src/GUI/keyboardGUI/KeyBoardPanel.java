@@ -60,7 +60,7 @@ public class KeyBoardPanel {
 
     public void showBoard(){
         keyboardFrame = new JFrame();
-        keyboardFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        keyboardFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         keyboardFrame.getContentPane().add(this.keyBoardPanel);
         keyboardFrame.pack();
         keyboardFrame.setVisible(true);
@@ -82,9 +82,7 @@ public class KeyBoardPanel {
             sourceButton.setText(keyboard.getSquare().getInput());
             sourceButton.setMargin(new Insets(0, 0, 0, 0));
             sourceButton.setFont(new Font("Arial", Font.PLAIN, 10));
-            System.out.println(keyboard.getSquare().getInput());
             keyboardFrame.dispose();
         }
     }
-
 }

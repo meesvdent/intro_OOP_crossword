@@ -3,18 +3,20 @@ package console.squares;
 public class AnswerSquare extends WhiteSquare{
 
     private char answer;
-    private char input;
 
     public AnswerSquare(char answer){
         this.answer = answer;
     }
 
-    public void setInput(char input){
-        this.input = input;
-    }
-
     public boolean checkAnswer(){
-        return this.answer == this.input;
+        System.out.println("checking: ");
+        System.out.println(answer);
+        System.out.println(input);
+        if(!this.input.isEmpty()){
+            return this.answer == this.input.charAt(0);
+        } else{
+            return false;
+        }
     }
 
 }
