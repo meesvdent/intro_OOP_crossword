@@ -1,5 +1,7 @@
 package crossword.console.squares.square;
 
+import enums.SquareType;
+
 /*
 * abstract class
 * Holds the variable which each child class has: type and symbol
@@ -7,15 +9,15 @@ package crossword.console.squares.square;
  */
 public abstract class AbstractSquare implements Square {
 
-    protected String type;
+    protected SquareType type;
     protected String symbol;
 
-    public AbstractSquare(String type, String symbol){
+    public AbstractSquare(SquareType type, String symbol){
         this.type = type;
         this.symbol = symbol;
     }
 
-    public String getType(){
+    public SquareType getType(){
         return this.type;
     }
 

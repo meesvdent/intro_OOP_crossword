@@ -22,7 +22,7 @@ public class KeyboardKeyPanel {
             this.keyPanel.setBackground(Color.WHITE);
             JButton keyButton = new JButton(String.valueOf(this.key.getLetter()));
             keyButton.setBackground(Color.WHITE);
-            keyButton.setOpaque(false);
+            keyButton.setContentAreaFilled(false);
             keyButton.setBorderPainted(false);
             keyButton.addActionListener(eventListener);
             keyButton.setMargin( new Insets(0, 0, 0, 0) );

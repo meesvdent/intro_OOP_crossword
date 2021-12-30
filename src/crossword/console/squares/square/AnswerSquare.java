@@ -2,9 +2,10 @@ package crossword.console.squares.square;
 
 public class AnswerSquare extends WhiteSquare{
 
-    private char answer;
+    private final char answer;
 
     public AnswerSquare(char answer){
+        super();
         this.answer = answer;
     }
 

@@ -1,5 +1,7 @@
 package crossword.console.squares.square;
 
+import enums.SquareType;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -14,7 +16,7 @@ public class BlueSquare extends WhiteSquare{
      * Number of remaining options for blue squares is set by parameter n
      */
     public BlueSquare(char hint){
-        super("blue", "H");
+        super(SquareType.BLUE, "H");
         this.hint = hint;
         this.initHint(5);        // initialization of the array with hints, this character can be changed to change
                                     // the number of remaining options for blue squares.

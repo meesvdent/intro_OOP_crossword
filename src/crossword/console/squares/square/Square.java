@@ -1,7 +1,9 @@
 package crossword.console.squares.square;
 
+import enums.SquareType;
+
 public interface Square {
 
-    String getType();
+    SquareType getType();
     String getSymbol();
 }

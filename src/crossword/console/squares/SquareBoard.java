@@ -1,6 +1,7 @@
 package crossword.console.squares;
 
 import crossword.console.squares.square.*;
+import enums.SquareType;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -92,7 +93,7 @@ public class SquareBoard {
         return this.squares[i][j];
     }
 
-    // toString method to represent squares in human readable format: similar to representation in input file.
+    // toString method to represent squares in human-readable format: similar to representation in input file.
     // used in console version. Can also represent state of squares (input).
     public String toString(){
         StringBuilder output = new StringBuilder();
@@ -114,10 +115,10 @@ public class SquareBoard {
             AbstractSquare curSquare = this.getSquares(i, j);
 
             // Check whether the chosen square is an instance of WhiteSquare (the only squares which accept input).
-            if(curSquare instanceof WhiteSquare whiteSquare){
+            if(curSquare.getType() == SquareType.WHITE){
                 System.out.println("Set the letter on square " + i + ", " + j + ".");
-                System.out.println("Your white square options: " + Arrays.toString(whiteSquare.getOptions()));
-                whiteSquare.setInput(new Scanner(System.in).next());
+                System.out.println("Your white square options: " + Arrays.toString(((WhiteSquare) curSquare).getOptions()));
+                ((WhiteSquare) curSquare).setInput(new Scanner(System.in).next());
             }
             else{
                 System.out.println("This square does not accept input.");

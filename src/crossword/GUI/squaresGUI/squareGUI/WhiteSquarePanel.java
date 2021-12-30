@@ -25,10 +25,11 @@ public class WhiteSquarePanel extends AbstractSquarePanel {
 
     public JButton createSquareButton(WhiteSquare whiteSquare){
         button = new JButton(whiteSquare.getInput());
-        button.setOpaque(false);
+        button.setContentAreaFilled(false);
         button.setBorderPainted(false);
         button.addActionListener(new WhiteSquareEventListener());
         button.setFont(new Font("Arial", Font.PLAIN, 20));
+        button.setMargin( new Insets(0, 0, 0, 0) );
         return button;
     }
 

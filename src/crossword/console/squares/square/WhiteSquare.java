@@ -1,5 +1,7 @@
 package crossword.console.squares.square;
 
+import enums.SquareType;
+
 // Class which describes subtype of squares in which an input can be entered.
 public class WhiteSquare extends AbstractSquare{
 
@@ -7,11 +9,11 @@ public class WhiteSquare extends AbstractSquare{
     protected char[] options;
 
     public WhiteSquare(){
-        super("white", "O");
+        super(SquareType.WHITE, "O");
         this.setOptions();
     }
 
-    public WhiteSquare(String type, String symbol){
+    public WhiteSquare(SquareType type, String symbol){
         super(type, symbol);
         this.setOptions();
     }

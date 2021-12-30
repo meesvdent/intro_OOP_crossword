@@ -18,7 +18,7 @@ public class Puzzle {
         crossword.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         crossword.setLayout(new FlowLayout());
 
-        squareBoardPanel = new SquareBoardPanel(filename, answer);
+        squareBoardPanel = new SquareBoardPanel(filename);
         answerBoardPanel = new AnswerBoardPanel(answer);
         questionBoardPanel = new QuestionBoardPanel(filename);
 
@@ -50,7 +50,7 @@ public class Puzzle {
                 new Runnable() {
                     @Override
                     public void run() {
-                        Puzzle runPuzzle = new Puzzle("puzzle-1-adjusted.txt", "SOUTHPARK");
+                        Puzzle runPuzzle = new Puzzle("src/puzzle-1-adjusted.txt", "SOUTHPARK");
                     }
                 }
         );
