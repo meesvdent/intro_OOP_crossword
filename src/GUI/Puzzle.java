@@ -10,13 +10,9 @@ import java.awt.*;
 
 public class Puzzle {
 
-    JFrame crosswordFrame;
-
     SquareBoardPanel squareBoardPanel;
     AnswerBoardPanel answerBoardPanel;
     QuestionBoardPanel questionBoardPanel;
-
-    KeyBoardPanel keyBoardPanel;
 
     public Puzzle(String filename, String answer){
         JFrame crossword = new JFrame("Crossword puzzle");
@@ -33,9 +29,15 @@ public class Puzzle {
         JPanel rightPanel = new JPanel();
         rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
 
+        JPanel rightLowerPanel = new JPanel();
+
         horizontalPanel.add(questionBoardPanel.getQuestionPanel());
         rightPanel.add(squareBoardPanel.getBoardPanel());
-        rightPanel.add(answerBoardPanel.getAnswerPanel());
+        rightPanel.setAlignmentY(Component.CENTER_ALIGNMENT);
+        rightPanel.add(rightLowerPanel);
+        JPanel answerBoardPanelJPanel = answerBoardPanel.getAnswerPanel();
+        answerBoardPanelJPanel.setAlignmentY(Component.CENTER_ALIGNMENT);
+        rightLowerPanel.add(answerBoardPanelJPanel);
         horizontalPanel.add(rightPanel);
 
         crossword.getContentPane().add(horizontalPanel);
