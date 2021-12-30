@@ -6,43 +6,41 @@ import java.util.Random;
 
 public class BlueSquare extends WhiteSquare{
 
-    private final char hint;
-    public char[] options;
+    private final char hint;         // the value which holds the correct letter for this bluesquare
+    public char[] options;          // array of 5 characters, of which 4 random characters and the correct character.
 
+
+    /**
+     * Initialization of blue square, sets type and color.
+     * Number of remaining options for blue squares is set by parameter n
+     */
     public BlueSquare(char hint){
         super("blue", "H");
         this.hint = hint;
-        this.initHint(5);
-        System.out.println("Blue options: "+ this.getOptions());
+        this.initHint(5);        // initialization of the array with hints, this character can be changed to change
+                                    // the number of remaining options for blue squares.
+
     }
 
+    // getter method for the hint
     public char getHint(){
         return this.hint;
     }
 
+    // setter method for the options
     private void setOptions(char[] options){
         this.options = options;
     }
 
-
     public Character[] getOptions(){
-        System.out.println("options");
-        System.out.println("options: " + this.options);
-        int nOptions = this.options.length;
-        Character[] characterOptions = new Character[nOptions];
-        int i = 0;
-        for(char option : this.options){
-            characterOptions[i] = option;
-            i++;
-        }
-        return characterOptions;
+        return getCharacters(this.options);
     }
 
-
+    // function which initializes the options array, which holds n unique characters of which n-1 random characters and the hint
     private void initHint(int n){
-        // function which initializes the options array, which holds n unique characters of which n-1 random characters and the hint
 
-        if(n< 3 || n>25){
+        // if the parameter gives a number below 2 or above 26, an exception must be thrown as this is invalid.
+        if(n < 2 || n>26){
             throw new IllegalArgumentException("Number of random characters in the hint must be between 2 and 26.");
         }
 

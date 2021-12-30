@@ -26,10 +26,14 @@ public class WhiteSquare extends AbstractSquare{
     }
 
     public Character[] getOptions(){
-        int nOptions = this.options.length;
+        return getCharacters(this.options);
+    }
+
+    protected static Character[] getCharacters(char[] options) {
+        int nOptions = options.length;
         Character[] characterOptions = new Character[nOptions];
         int i = 0;
-        for(char option : this.options){
+        for(char option : options){
             characterOptions[i] = option;
             i++;
         }

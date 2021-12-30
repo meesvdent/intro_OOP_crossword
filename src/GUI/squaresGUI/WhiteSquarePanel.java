@@ -31,6 +31,7 @@ public class WhiteSquarePanel extends AbstractSquarePanel {
         button.setOpaque(false);
         button.setBorderPainted(false);
         button.addActionListener(new WhiteSquareEventListener());
+        button.setFont(new Font("Arial", Font.PLAIN, 20));
         return button;
     }
 

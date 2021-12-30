@@ -81,7 +81,6 @@ public class KeyBoardPanel {
             keyboard.setChoice(e.getActionCommand());
             sourceButton.setText(keyboard.getSquare().getInput());
             sourceButton.setMargin(new Insets(0, 0, 0, 0));
-            sourceButton.setFont(new Font("Arial", Font.PLAIN, 10));
             keyboardFrame.dispose();
         }
     }

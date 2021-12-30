@@ -28,7 +28,7 @@ public class AnswerBoardPanel {
             answerSquareBoard.add(curPanel.getSquarePanel());
         }
 
-        JButton checkButton = new JButton("Check!");
+        JButton checkButton = new JButton("Check");
         checkButton.addActionListener(new AnswerBoardEventListener());
         this.answerPanel.add(answerSquareBoard);
         this.answerPanel.add(checkButton);
@@ -54,10 +54,8 @@ public class AnswerBoardPanel {
             if(answerBoard.checkAnswer()){
                 JOptionPane.showMessageDialog(null, "Your answer is correct!");
             } else{
-                JOptionPane.showMessageDialog(null, "That's a shame, incorrect!");
+                JOptionPane.showMessageDialog(null, "That's a shame, incorrect!\nKeep trying!");
             }
         }
     }
-
-
 }

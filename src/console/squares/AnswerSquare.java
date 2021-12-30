@@ -9,10 +9,7 @@ public class AnswerSquare extends WhiteSquare{
     }
 
     public boolean checkAnswer(){
-        System.out.println("checking: ");
-        System.out.println(answer);
-        System.out.println(input);
-        if(!this.input.isEmpty()){
+        if(!(this.input == null)){
             return this.answer == this.input.charAt(0);
         } else{
             return false;
