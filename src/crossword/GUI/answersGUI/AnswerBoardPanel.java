@@ -9,6 +9,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// Graphical version of the AnswerBoard class.
+// Will create an AnswerBoard in its constructor and will create AnswerSquarePanels objects for each AnswerSquare
+// in the AnswerBoard, these will be added to a JPanel.
 public class AnswerBoardPanel {
 
     JPanel answerPanel;
@@ -16,10 +19,15 @@ public class AnswerBoardPanel {
 
     public AnswerBoardPanel(String answer){
 
+        // create new panel with flow layout
         this.answerPanel = new JPanel();
         this.answerPanel.setLayout(new FlowLayout());
+
+        // initialize underlying answerboard
         this.answerBoard = new AnswerBoard(answer);
 
+        // create new panel with flow layout which will hold the answersquarepanels
+        // loop through answersquares and add to the panel
         JPanel answerSquareBoard = new JPanel();
         answerSquareBoard.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
         for(int i=0; i<answer.length(); i++){
@@ -28,8 +36,11 @@ public class AnswerBoardPanel {
             answerSquareBoard.add(curPanel.getSquarePanel());
         }
 
+        // add button with eventlistener
         JButton checkButton = new JButton("Check");
         checkButton.addActionListener(new AnswerBoardEventListener());
+
+        // add everything to main panel
         this.answerPanel.add(answerSquareBoard);
         this.answerPanel.add(checkButton);
 
@@ -48,6 +59,7 @@ public class AnswerBoardPanel {
         return this.answerPanel;
     }
 
+    // eventlistener for check button. Checks whether inputs are correct and shows dialog.
     public class AnswerBoardEventListener implements ActionListener{
 
         @Override

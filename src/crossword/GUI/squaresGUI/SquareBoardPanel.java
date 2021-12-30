@@ -12,14 +12,22 @@ import enums.SquareType;
 import javax.swing.*;
 import java.awt.*;
 
+// Class which represents the graphical version of the SquareBoard.
+// Receives the input file location as a variable in its constructor and creates a new SquareBoard instance.
+// It will create a new AbstractSquarePanel instance of the appropriate type for each AbstractSquare in the SquareBoard.
+// These will be added to a JFrame.
 public class SquareBoardPanel {
 
-    JPanel boardPanel;
+    JPanel boardPanel; // Panel on which the class is represented
 
+    // constructor, creates the boardPanel
     public SquareBoardPanel(String filename) {
+
+        // initiate squareBoard and array for squared
         SquareBoard squareBoard = new SquareBoard(filename);
         AbstractSquare[][] abstractSquares = squareBoard.getSquares();
 
+        // loop through squares in squareboard, create panels and add to 2d array representing the board
         AbstractSquarePanel[][] squarePanels = new AbstractSquarePanel[squareBoard.getHeight()][squareBoard.getWidth()];
         for (int i = 0; i < abstractSquares.length; i++) {
             for (int j = 0; j < abstractSquares[i].length; j++) {
@@ -39,9 +47,11 @@ public class SquareBoardPanel {
 
         }
 
+        // initiate panel with grid layout
         this.boardPanel = new JPanel();
         this.boardPanel.setLayout(new GridLayout(squareBoard.getHeight(), squareBoard.getWidth()));
 
+        // loop through panels in 2d array and add to boardPanel
         JPanel topRow = new JPanel();
         topRow.setLayout(new FlowLayout());
         for (AbstractSquarePanel[] squarePanel : squarePanels) {

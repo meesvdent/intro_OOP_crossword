@@ -5,19 +5,21 @@ import enums.SquareType;
 // Class which describes subtype of squares in which an input can be entered.
 public class WhiteSquare extends AbstractSquare{
 
-    protected String input;
-    protected char[] options;
+    protected String input; // user input
+    protected char[] options; // options which can be entered in this square, if whitesquare will hold the alphabet
 
     public WhiteSquare(){
         super(SquareType.WHITE, "O");
         this.setOptions();
     }
 
+    // constructor
     public WhiteSquare(SquareType type, String symbol){
         super(type, symbol);
         this.setOptions();
     }
 
+    // getters and setters
     public void setOptions(){
         char[] optionCharacters = new char[26];
         for(int i = 0; i<26; i++){

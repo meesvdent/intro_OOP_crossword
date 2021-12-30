@@ -4,8 +4,11 @@ import crossword.console.answers.AnswerBoard;
 import crossword.console.questions.QuestionBoard;
 import crossword.console.squares.SquareBoard;
 
-public class Main {
-    public static void main(String[] args) {
+// class used to test console version
+public class RunConsole {
+
+    // run test
+    public static void runConsole() {
         String filename = "puzzle-1-adjusted.txt";
         SquareBoard testBoard = new SquareBoard(filename);
         System.out.println(testBoard);

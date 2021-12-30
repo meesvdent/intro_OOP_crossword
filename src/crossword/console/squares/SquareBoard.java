@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 /*
-* class which holds the squares (these are colored boxes where the answers to questions can be filled
+* class which holds the squares (these are colored boxes where the answers to questions can be filled)
 *
  */
 public class SquareBoard {

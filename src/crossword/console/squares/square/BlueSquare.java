@@ -5,6 +5,11 @@ import enums.SquareType;
 import java.util.ArrayList;
 import java.util.Random;
 
+// Extends WhiteSquare.
+// In this Square, the user will only have to choose from five letters, instead of all possible letters.
+// Therefore, these squares store the correct letter which it receives in its constructor,
+// and will randomly generate four other letters.
+// These are stored as a member variable so that the possible letters will stay the same after initialization.
 public class BlueSquare extends WhiteSquare{
 
     private final char hint;         // the value which holds the correct letter for this bluesquare

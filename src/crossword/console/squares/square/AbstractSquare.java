@@ -9,14 +9,16 @@ import enums.SquareType;
  */
 public abstract class AbstractSquare implements Square {
 
-    protected SquareType type;
-    protected String symbol;
+    protected SquareType type; // type of the square
+    protected String symbol; // symbol which will represent the square in console version
 
+    // constructor
     public AbstractSquare(SquareType type, String symbol){
         this.type = type;
         this.symbol = symbol;
     }
 
+    // getters and setters
     public SquareType getType(){
         return this.type;
     }
