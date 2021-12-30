@@ -19,14 +19,18 @@ public class AnswerBoardPanel {
         this.answerPanel = new JPanel();
         this.answerPanel.setLayout(new FlowLayout());
         this.answerBoard = new AnswerBoard(answer);
+
+        JPanel answerSquareBoard = new JPanel();
+        answerSquareBoard.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
         for(int i=0; i<answer.length(); i++){
             AnswerSquare curAnswer = answerBoard.getAnswerSquare(i);
             AnswerSquarePanel curPanel = new AnswerSquarePanel(curAnswer);
-            this.answerPanel.add(curPanel.getSquarePanel());
+            answerSquareBoard.add(curPanel.getSquarePanel());
         }
 
         JButton checkButton = new JButton("Check!");
         checkButton.addActionListener(new AnswerBoardEventListener());
+        this.answerPanel.add(answerSquareBoard);
         this.answerPanel.add(checkButton);
 
     }
