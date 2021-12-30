@@ -1,5 +1,10 @@
 package console.squares;
 
+/*
+* abstract class
+* Holds the variable which each child class has: type and symbol
+* Describes the methods which each child class inherits.
+ */
 public abstract class AbstractSquare {
 
     protected String type;

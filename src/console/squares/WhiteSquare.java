@@ -2,6 +2,7 @@ package console.squares;
 
 import java.util.Arrays;
 
+// Class which describes subtype of squares in which an input can be entered.
 public class WhiteSquare extends AbstractSquare{
 
     protected String input;
